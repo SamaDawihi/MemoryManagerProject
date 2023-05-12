@@ -19,9 +19,9 @@ class Memory{
         return SIZE;
     }
 
-    boolean allocate(int size, Approaches a){
+    boolean allocate(int size){
         
-    switch (a) {
+    switch (allocationStrategy) {
         case FIRST_FIT:
         
             break;
