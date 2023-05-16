@@ -3,10 +3,12 @@ class Memory{
     private static int SIZE = 1024;
     Partition[] partion;
     Approaches allocationStrategy;
+    int noOfPartitions;
 
     Memory(int noOfPartitions, Approaches allocationStrategy){
         partion = new Partition[noOfPartitions];
         this.allocationStrategy = allocationStrategy;
+        this.noOfPartitions = noOfPartitions;
 
     }
 
@@ -19,14 +21,14 @@ class Memory{
         return SIZE;
     }
 
-    boolean allocate(String PID, int size,int PortinIndex){
+    boolean allocate(String PID, int size){
         
     switch (allocationStrategy) {
         case FIRST_FIT:
-        FirstFitAllocate(PID,size,PortinIndex);
+        FirstFitAllocate(PID,size);
             break;
         case BEST_FIT:
-        
+            BestFitAllocate(PID,size);
             break;
         case WORST_FIT:
 
@@ -36,13 +38,21 @@ class Memory{
          }
     return true;
     }
+    public void BestFitAllocate(String PID, int Psize){
+        for(int i = 0; i < Psize; i++){
 
-        private void FirstFitAllocate(String PID, int Psize,int PortinIndex){
-        if(Psize <= Partition[PortinIndex].getSize() && Partition[PortinIndex].isFree() && PID != null){
-            Partition[PortinIndex].setSize(Psize);
-            Partition[PortinIndex].setStatus(false);
-            Partition[PortinIndex].setProcessID(PID);
-            Partition[PortinIndex].CalcInternalFragment(Psize);
+        }
+    }
+    
+
+        private void FirstFitAllocate(String PID, int Psize){
+        for(int i = 0; i < Psize; i++){
+            if(Psize <= partion[i].getSize() && partion[i].isFree() && PID != null){
+                partion[i].setSize(Psize);
+                partion[i].setStatus(false);
+                partion[i].setProcessID(PID);
+                partion[i].CalcInternalFragment(Psize);
+            }
         }
 
     }

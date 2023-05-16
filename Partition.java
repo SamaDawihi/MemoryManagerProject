@@ -16,7 +16,7 @@ public class Partition {
     }
 
 
-    public int CalcInternalFragment(int Psize){
+    public void CalcInternalFragment(int Psize){
          this.internalFragmentation = size - Psize; 
     }
     
