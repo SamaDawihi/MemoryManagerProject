@@ -39,34 +39,45 @@ class Memory{
     return true;
     }
     public boolean BestFitAllocate(String PID, int Psize){
-        int smallestFit = 0;
-        for(int i = 1; i < noOfPartitions; i++){
-            if(Psize <= partion[i].getSize() && partion[i].isFree() && PID != null){
-                if(partion[i].getSize() < partion[smallestFit].getSize() || !partion[smallestFit].isFree())
-                    smallestFit = i;
-            }
-        }
+        int smallestFit = -1;
 
-        if(partion[smallestFit].isFree()){
-            partion[smallestFit].setStatus(false);
-            partion[smallestFit].setProcessID(PID);
-            partion[smallestFit].CalcInternalFragment(Psize);
-            return true;
+        if(PID == null) return false;
+
+        for(int i=0; i<noOfPartitions; i++; ){
+          if(partion[i].isFree() && partion[i].getSize() >= Psize ){
+            smallestFit = i;
+          
+          for(int j = i+1 ; j<noOfPartitions ; j++){
+             if(partion[j].isFree() && partion[j].getSize() >= Psize && partion[j].getSize() < partion[smallestFit].getSize() ){
+            smallestFit = j;
+             }
+          }
+          break;
+          }
+        } // end of outer loop
+        if(smallestFit != -1){
+
+                partion[smallestFit].setStatus(false);
+                partion[smallestFit].setProcessID(PID);
+                partion[smallestFit].CalcInternalFragment(Psize);
+                 return true;
         }
-        
-        return false;
-        
+       return false;
     }
 
-    private void FirstFitAllocate(String PID, int Psize){
+    private boolean FirstFitAllocate(String PID, int Psize){
+
+        if(PID == null) return false;
         for(int i = 0; i < noOfPartitions; i++){
-            if(Psize <= partion[i].getSize() && partion[i].isFree() && PID != null){
-                partion[i].setSize(Psize);
+            if(Psize <= partion[i].getSize() && partion[i].isFree()){
+    
                 partion[i].setStatus(false);
                 partion[i].setProcessID(PID);
                 partion[i].CalcInternalFragment(Psize);
+                return true;
             }
         }
+        return false;
 
     }
 
@@ -74,14 +85,29 @@ class Memory{
 
         int worst = -1;
 
-        for(int i=0; i<partion.length, i++; ){
-            if(partion[i].isFree() && PID != null && partion[i] >= PID)
-            worst = i;
+        if(PID == null) return false;
 
-            for(int j= i+1 ; j< partion.length ; j++){
-                
-            }
+        for(int i=0; i<noOfPartitions; i++; ){
+          if(partion[i].isFree() && partion[i].getSize() >= Psize ){
+            worst = i;
+          
+          for(int j = i+1 ; j<noOfPartitions ; j++){
+             if(partion[j].isFree() && partion[j].getSize() >= Psize && partion[j].getSize() > partion[worst].getSize() ){
+            worst = j;
+             }
+          }
+          break;
+          }
+        } // end of outer loop
+        if(worst != -1){
+
+                partion[worst].setStatus(false);
+                partion[worst].setProcessID(PID);
+                partion[worst].CalcInternalFragment(Psize);
+                 return true;
         }
+       return false;
+
     }
 
     boolean deallocate(int size){
