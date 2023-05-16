@@ -38,12 +38,25 @@ class Memory{
          }
     return true;
     }
-    public void BestFitAllocate(String PID, int Psize){
-        for(int i = 0; i < Psize; i++){
-
+    public boolean BestFitAllocate(String PID, int Psize){
+        int smallestFit = 0;
+        for(int i = 1; i < Psize; i++){
+            if(Psize <= partion[i].getSize() && partion[i].isFree() && PID != null){
+                if(partion[i].getSize() < partion[smallestFit].getSize() || !partion[smallestFit].isFree()){
+                    smallestFit = i;
+            }
         }
+        
+        if(partion[smallestFit].isFree()){
+            partion[smallestFit].setStatus(false);
+            partion[smallestFit].setProcessID(PID);
+            partion[smallestFit].CalcInternalFragment(Psize);
+            return true;
+        }
+        
+        return false;
+        
     }
-    
 
         private void FirstFitAllocate(String PID, int Psize){
         for(int i = 0; i < Psize; i++){
