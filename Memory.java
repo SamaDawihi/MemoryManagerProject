@@ -19,11 +19,11 @@ class Memory{
         return SIZE;
     }
 
-    boolean allocate(int size){
+    boolean allocate(String PID, int size,int PortinIndex){
         
     switch (allocationStrategy) {
         case FIRST_FIT:
-        
+        FirstFitAllocate(PID,size,PortinIndex);
             break;
         case BEST_FIT:
         
@@ -36,6 +36,19 @@ class Memory{
          }
     return true;
     }
+
+        private void FirstFitAllocate(String PID, int Psize,int PortinIndex){
+        if(Psize <= Partition[PortinIndex].getSize() && Partition[PortinIndex].isFree() && PID != null){
+            Partition[PortinIndex].setSize(Psize);
+            Partition[PortinIndex].setStatus(false);
+            Partition[PortinIndex].setProcessID(PID);
+            Partition[PortinIndex].CalcInternalFragment(Psize);
+        }
+
+    }
+
+
+
     boolean deallocate(int size){
         return true;
     }

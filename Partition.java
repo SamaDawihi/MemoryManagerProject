@@ -14,6 +14,11 @@ public class Partition {
         this.processID = null;
         this.internalFragmentation = -1;
     }
+
+
+    public int CalcInternalFragment(int Psize){
+         this.internalFragmentation = size - Psize; 
+    }
     
 
     public int getSize() {
@@ -49,7 +54,7 @@ public class Partition {
     public int getInternalFragmentation() {
         return internalFragmentation;
     }
-    public void setInternalFragmentation(int internalFragmentation) {
-        this.internalFragmentation = internalFragmentation;
-    }
+  //  public void setInternalFragmentation(int internalFragmentation) {
+   //     this.internalFragmentation = internalFragmentation;
+   // }
 }
