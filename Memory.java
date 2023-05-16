@@ -70,6 +70,20 @@ class Memory{
 
     }
 
+        private boolean WorstFit(String PID, int Psize){
+
+        int worst = -1;
+
+        for(int i=0; i<partion.length, i++; ){
+            if(partion[i].isFree() && PID != null && partion[i] >= PID)
+            worst = i;
+
+            for(int j= i+1 ; j< partion.length ; j++){
+                
+            }
+        }
+    }
+
     boolean deallocate(int size){
         return true;
     }
