@@ -40,13 +40,13 @@ class Memory{
     }
     public boolean BestFitAllocate(String PID, int Psize){
         int smallestFit = 0;
-        for(int i = 1; i < Psize; i++){
+        for(int i = 1; i < noOfPartitions; i++){
             if(Psize <= partion[i].getSize() && partion[i].isFree() && PID != null){
-                if(partion[i].getSize() < partion[smallestFit].getSize() || !partion[smallestFit].isFree()){
+                if(partion[i].getSize() < partion[smallestFit].getSize() || !partion[smallestFit].isFree())
                     smallestFit = i;
             }
         }
-        
+
         if(partion[smallestFit].isFree()){
             partion[smallestFit].setStatus(false);
             partion[smallestFit].setProcessID(PID);
@@ -58,8 +58,8 @@ class Memory{
         
     }
 
-        private void FirstFitAllocate(String PID, int Psize){
-        for(int i = 0; i < Psize; i++){
+    private void FirstFitAllocate(String PID, int Psize){
+        for(int i = 0; i < noOfPartitions; i++){
             if(Psize <= partion[i].getSize() && partion[i].isFree() && PID != null){
                 partion[i].setSize(Psize);
                 partion[i].setStatus(false);
@@ -69,8 +69,6 @@ class Memory{
         }
 
     }
-
-
 
     boolean deallocate(int size){
         return true;
