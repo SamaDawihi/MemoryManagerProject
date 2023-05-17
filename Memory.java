@@ -114,8 +114,19 @@ class Memory{
     }
 
     boolean deallocate(String PID){
-        return true;
+        boolean found = false;
+
+        for(int i=0; i<noOfPartitions; i++){
+            if(partion[i].getProcessID().equalsIgnoreCase(PID)){
+            found = true;
+            partion[i].setStatus(true);
+            partion[i].setProcessID(null);
+            partion[i].setInternalFragmentation(-1);
+            break;}
+        }
+        return found;
     }
+    
     String status(){
         return null;
     }

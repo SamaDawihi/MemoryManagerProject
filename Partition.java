@@ -61,7 +61,7 @@ public class Partition {
         return internalFragmentation;
     }
     
-  //  public void setInternalFragmentation(int internalFragmentation) {
-   //     this.internalFragmentation = internalFragmentation;
-   // }
+    public void setInternalFragmentation(int internalFragmentation) {
+        this.internalFragmentation = internalFragmentation;
+    }
 }
