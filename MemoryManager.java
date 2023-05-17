@@ -103,7 +103,8 @@ public class MemoryManager {
             }
             break;
             case 3:
-            memory.status();
+            //memory.status();
+            System.out.println(memory.status());
             break;
             case 4:
             System.out.println("\nThank you.");

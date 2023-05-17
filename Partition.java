@@ -36,6 +36,9 @@ public class Partition {
     public boolean isFree() {
         return isFree;
     }
+    public String getStatus(){
+        return (isFree)?"free":"allocated";
+    }
     public void setStatus(Boolean isFree) {
         this.isFree = isFree;
     }

@@ -1,0 +1,5 @@
+1|   status: free, partition size: 10KB, starting address: 0KB, ending address: 10KB, process ID: null, internal fragmentation size: -1KB 
+2|   status: free, partition size: 20KB, starting address: 10KB, ending address: 30KB, process ID: null, internal fragmentation size: -1KB 
+3|   status: free, partition size: 3KB, starting address: 30KB, ending address: 33KB, process ID: null, internal fragmentation size: -1KB 
+4|   status: free, partition size: 40KB, starting address: 33KB, ending address: 73KB, process ID: null, internal fragmentation size: -1KB 
+              Memory:   [ H | H | H | H ]

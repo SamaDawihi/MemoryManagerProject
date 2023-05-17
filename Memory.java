@@ -1,3 +1,4 @@
+import java.io.*;
 class Memory{
 
     private static int SIZE = 1024;
@@ -129,7 +130,42 @@ class Memory{
     }
     
     String status(){
-        return null;
+        String string="";
+        for (int i=1; i<= noOfPartitions; i++){
+            string+= i+"|   ";
+            string += "status: "+partion[i-1].getStatus()+", partition size: "+partion[i-1].getSize()+"KB, starting address: "+
+            partion[i-1].getAddressStart()+"KB, ending address: "+
+            partion[i-1].getAddressEnd()+"KB, process ID: "+partion[i-1].getProcessID()+", internal fragmentation size: "+
+            partion[i-1].getInternalFragmentation()+"KB \n";
+        }
+        string += "              Memory:   [ ";
+        for (int i=0; i<noOfPartitions; i++){
+            if (partion[i].isFree()){
+                if (i==noOfPartitions-1)
+                    string += "H ]";
+                else
+                    string += "H | ";
+            }
+            else{
+                if(i==noOfPartitions-1)
+                    string += partion[i].getProcessID()+" ]";
+                else
+                    string += partion[i].getProcessID()+" | ";
+                
+              } 
+         }
+        try{
+         File f = new File ("memoryReport.txt");
+         FileOutputStream fos = new FileOutputStream(f);
+         PrintWriter pr = new PrintWriter(fos);
+         pr.println(string);
+         pr.close();
+        }
+        catch(IOException i){
+            System.out.println("error has occured while writing to the file ");
+        }
+        //System.out.println("The report has been written to a text file successfully!");
+        return string;
     }
 
 }
