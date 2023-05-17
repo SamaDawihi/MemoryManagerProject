@@ -113,7 +113,7 @@ class Memory{
 
     }
 
-    boolean deallocate(int size){
+    boolean deallocate(String PID){
         return true;
     }
     String status(){

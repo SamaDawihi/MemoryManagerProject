@@ -82,8 +82,28 @@ public class MemoryManager {
             }
             break;
             case 2:
+            completingSen="the";
+            String procesIdOfBlock="";
+            boolean flag1=false;
+            do{
+            if(flag1)
+            completingSen="a valid";
+            System.out.println("Please enter "+completingSen+" process ID to be released from the memory");
+            procesIdOfBlock=in.next();
+            if( ! ( (procesIdOfBlock.charAt(0)=='p'||procesIdOfBlock.charAt(0)=='P')&&isNumeric(procesIdOfBlock.substring(1)) ))
+            flag1=true;
+            else
+            flag1=false;
+            }while(flag1);
+            
+            if(!memory.deallocate(procesIdOfBlock))
+            System.out.println("\nSORRY your request can not be done because there is no such id".toUpperCase()+" \n");
+            else{
+                System.out.println("\nyour de-allocation has completed\n".toUpperCase());
+            }
             break;
             case 3:
+            memory.status();
             break;
             case 4:
             System.out.println("\nThank you.");
