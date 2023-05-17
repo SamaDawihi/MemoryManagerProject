@@ -5,6 +5,11 @@ public class Partition {
     private int addressEnd;
     private String processID; //PN --> P1
     private int internalFragmentation;
+
+    void printo(){
+        System.out.println("processID"+processID+" size"+size+" isFree"+isFree+" addressStart"+addressStart
+        +" addressEnd"+addressEnd+" internalFragmentation"+internalFragmentation);
+    }
     
     Partition(int size,int addressStart,int addressEnd) {
         this.size = size;
@@ -14,7 +19,8 @@ public class Partition {
         this.processID = null;
         this.internalFragmentation = -1;
     }
-
+    Partition() {
+    }
 
     public void CalcInternalFragment(int Psize){
          this.internalFragmentation = size - Psize; 
@@ -54,6 +60,7 @@ public class Partition {
     public int getInternalFragmentation() {
         return internalFragmentation;
     }
+    
   //  public void setInternalFragmentation(int internalFragmentation) {
    //     this.internalFragmentation = internalFragmentation;
    // }

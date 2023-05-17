@@ -5,6 +5,16 @@ class Memory{
     Approaches allocationStrategy;
     int noOfPartitions;
 
+    Memory(int noOfPartitions){
+        partion = new Partition[noOfPartitions];
+        this.noOfPartitions = noOfPartitions;
+        for(int i=0;i<this.noOfPartitions;i++)
+        partion[i]=new Partition();
+
+    }
+    void setAllocationStrategy(Approaches allocationStrategy){
+        this.allocationStrategy = allocationStrategy;
+    }
     Memory(int noOfPartitions, Approaches allocationStrategy){
         partion = new Partition[noOfPartitions];
         this.allocationStrategy = allocationStrategy;
