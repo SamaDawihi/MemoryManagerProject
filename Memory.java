@@ -114,10 +114,11 @@ class Memory{
     }
 
     boolean deallocate(String PID){
+        if(PID == null) return false;
         boolean found = false;
 
         for(int i=0; i<noOfPartitions; i++){
-            if(partion[i].getProcessID().equalsIgnoreCase(PID)){
+            if(partion[i].getProcessID() != null && partion[i].getProcessID().equalsIgnoreCase(PID)){
             found = true;
             partion[i].setStatus(true);
             partion[i].setProcessID(null);
