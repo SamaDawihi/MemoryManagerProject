@@ -90,7 +90,7 @@ public class MemoryManager {
                     do{
                     if(flag)
                     completingSen="a valid";
-                    System.out.println("Please enter "+completingSen+" process ID of the block you want to allocate");
+                    System.out.println("Please enter "+completingSen+" process ID of the block you want to allocate in the form of \'PN\' where N represents the process number");
                     processIdOfBlock=in.next();
                     if( ! ( (processIdOfBlock.charAt(0)=='p'||processIdOfBlock.charAt(0)=='P')&&isNumeric(processIdOfBlock.substring(1)) ))
                     flag=true;
