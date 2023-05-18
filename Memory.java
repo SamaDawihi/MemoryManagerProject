@@ -134,8 +134,8 @@ class Memory{
         for (int i=1; i<= noOfPartitions; i++){
             string+= i+"|   ";
             string += "status: "+partion[i-1].getStatus()+", partition size: "+partion[i-1].getSize()+"KB, starting address: "+
-            partion[i-1].getAddressStart()+"KB, ending address: "+
-            partion[i-1].getAddressEnd()+"KB, process ID: "+partion[i-1].getProcessID()+", internal fragmentation size: "+
+            partion[i-1].getAddressStart()+", ending address: "+
+            partion[i-1].getAddressEnd()+", process ID: "+partion[i-1].getProcessID()+", internal fragmentation size: "+
             partion[i-1].getInternalFragmentation()+"KB \n";
         }
         string += "              Memory:   [ ";
