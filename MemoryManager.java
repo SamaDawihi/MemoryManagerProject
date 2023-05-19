@@ -32,9 +32,9 @@ public class MemoryManager {
                     in.next();
                 }
             }
-
-            memory.createPartition(i,sizeOfPortion,start,start+sizeOfPortion);
-            start+=sizeOfPortion;
+            int end=start+(sizeOfPortion)-1;
+            memory.createPartition(i,sizeOfPortion,start,end);
+            start=end+1;
         }
 
         
