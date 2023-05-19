@@ -132,11 +132,11 @@ class Memory{
     String status(){
         String string="";
         for (int i=1; i<= noOfPartitions; i++){
+            String internalFrag = partion[i-1].getInternalFragmentation()==-1?"-1":partion[i-1].getInternalFragmentation()+" KB";
             string+= i+"|   ";
             string += "status: "+partion[i-1].getStatus()+", partition size: "+partion[i-1].getSize()+"KB, starting address: "+
             partion[i-1].getAddressStart()+", ending address: "+
-            partion[i-1].getAddressEnd()+", process ID: "+partion[i-1].getProcessID()+", internal fragmentation size: "+
-            partion[i-1].getInternalFragmentation()+"KB \n";
+            partion[i-1].getAddressEnd()+", process ID: "+partion[i-1].getProcessID()+", internal fragmentation size: "+internalFrag+"\n";
         }
         string += "              Memory:   [ ";
         for (int i=0; i<noOfPartitions; i++){
@@ -155,7 +155,7 @@ class Memory{
               } 
          }
         try{
-         File f = new File ("memoryReport.txt");
+         File f = new File ("Report.txt");
          FileOutputStream fos = new FileOutputStream(f);
          PrintWriter pr = new PrintWriter(fos);
          pr.println(string);
